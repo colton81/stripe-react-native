@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   AddToWalletButton,
   Constants,
@@ -10,14 +10,14 @@ import {
   isPlatformPaySupported,
   PlatformPay,
   PlatformPayButton,
-} from '@stripe/stripe-react-native';
-import PaymentScreen from '../components/PaymentScreen';
-import { API_URL } from '../Config';
-import { Alert, StyleSheet, View, Image } from 'react-native';
-// @ts-ignore
-import AddToGooglePayPNG from '../assets/Add-to-Google-Pay-Button-dark-no-shadow.png';
+} from "@stripe/stripe-react-native";
+import PaymentScreen from "../components/PaymentScreen";
+import { API_URL } from "../Config";
+import { Alert, StyleSheet, View, Image } from "react-native";
+//@ts-expect-error temp
+import AddToGooglePayPNG from "../assets/Add-to-Google-Pay-Button-dark-no-shadow.png";
 
-const LIVE_CARD_ID = 'ic_1KnTM2F05jLespP6wNLZQ1mu';
+const LIVE_CARD_ID = "ic_1KnTM2F05jLespP6wNLZQ1mu";
 
 export default function GooglePayScreen() {
   const [isGooglePaySupported, setIsGooglePaySupported] = useState(false);
@@ -26,7 +26,7 @@ export default function GooglePayScreen() {
   const [cardDetails, setCardDetails] = useState<any>(null);
   const [androidCardToken, setAndroidCardToken] =
     useState<null | GooglePayCardToken>(null);
-  const [clientSecret, setClientSecret] = useState<String | null>(null);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   useEffect(() => {
     fetchEphemeralKey();
@@ -41,9 +41,9 @@ export default function GooglePayScreen() {
 
   const checkIfCardInWallet = async () => {
     const response = await fetch(`${API_URL}/issuing-card-details`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         id: LIVE_CARD_ID,
@@ -67,7 +67,7 @@ export default function GooglePayScreen() {
         console.log(`Card status for native wallet: ${details.status}`);
       }
       if (
-        details?.token?.status === 'TOKEN_STATE_NEEDS_IDENTITY_VERIFICATION'
+        details?.token?.status === "TOKEN_STATE_NEEDS_IDENTITY_VERIFICATION"
       ) {
         setAndroidCardToken(details.token);
       }
@@ -76,19 +76,19 @@ export default function GooglePayScreen() {
 
   const fetchPaymentIntentClientSecret = async () => {
     const response = await fetch(`${API_URL}/create-payment-intent`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        currency: 'usd',
-        items: ['id-1'],
+        currency: "usd",
+        items: ["id-1"],
         force3dSecure: true,
       }),
     });
     const result = await response.json();
     if (!result.clientSecret) {
-      Alert.alert('Error fetching client secret.', result.error);
+      Alert.alert("Error fetching client secret.", result.error);
     }
     setClientSecret(result.clientSecret);
   };
@@ -99,9 +99,9 @@ export default function GooglePayScreen() {
       {
         googlePay: {
           testEnv: true,
-          merchantName: 'Test',
-          merchantCountryCode: 'US',
-          currencyCode: 'usd',
+          merchantName: "Test",
+          merchantCountryCode: "US",
+          currencyCode: "usd",
           billingAddressConfig: {
             format: PlatformPay.BillingAddressFormat.Full,
             isPhoneNumberRequired: true,
@@ -112,9 +112,9 @@ export default function GooglePayScreen() {
     );
 
     if (error) {
-      Alert.alert('Failure', error.localizedMessage);
+      Alert.alert("Failure", error.localizedMessage);
     } else {
-      Alert.alert('Success', 'Check the logs for payment intent details.');
+      Alert.alert("Success", "Check the logs for payment intent details.");
       console.log(JSON.stringify(paymentIntent, null, 2));
       setClientSecret(null);
     }
@@ -128,10 +128,10 @@ export default function GooglePayScreen() {
       await createPlatformPayPaymentMethod({
         googlePay: {
           amount: 12,
-          currencyCode: 'USD',
+          currencyCode: "USD",
           testEnv: true,
-          merchantName: 'Test',
-          merchantCountryCode: 'US',
+          merchantName: "Test",
+          merchantCountryCode: "US",
           billingAddressConfig: {
             format: PlatformPay.BillingAddressFormat.Full,
             isPhoneNumberRequired: true,
@@ -145,9 +145,9 @@ export default function GooglePayScreen() {
       });
 
     if (error) {
-      Alert.alert('Failure', error.localizedMessage);
+      Alert.alert("Failure", error.localizedMessage);
     } else {
-      Alert.alert('Success', 'Check the logs for payment method details.');
+      Alert.alert("Success", "Check the logs for payment method details.");
       console.log(JSON.stringify(paymentMethod, null, 2));
       console.log(JSON.stringify(shippingContact, null, 2));
     }
@@ -157,10 +157,10 @@ export default function GooglePayScreen() {
     const { error, token, shippingContact } = await createPlatformPayToken({
       googlePay: {
         amount: 12,
-        currencyCode: 'USD',
+        currencyCode: "USD",
         testEnv: true,
-        merchantName: 'Test',
-        merchantCountryCode: 'US',
+        merchantName: "Test",
+        merchantCountryCode: "US",
         billingAddressConfig: {
           format: PlatformPay.BillingAddressFormat.Full,
           isPhoneNumberRequired: true,
@@ -174,9 +174,9 @@ export default function GooglePayScreen() {
     });
 
     if (error) {
-      Alert.alert('Failure', error.localizedMessage);
+      Alert.alert("Failure", error.localizedMessage);
     } else {
-      Alert.alert('Success', 'Check the logs for token details.');
+      Alert.alert("Success", "Check the logs for token details.");
       console.log(JSON.stringify(token, null, 2));
       console.log(JSON.stringify(shippingContact, null, 2));
     }
@@ -184,9 +184,9 @@ export default function GooglePayScreen() {
 
   const fetchEphemeralKey = async () => {
     const response = await fetch(`${API_URL}/ephemeral-key`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         apiVersion: Constants.API_VERSIONS.ISSUING,
@@ -235,16 +235,16 @@ export default function GooglePayScreen() {
               primaryAccountIdentifier:
                 cardDetails?.wallet?.primary_account_identifier,
               lastFour: cardDetails?.last4,
-              description: 'Added by Stripe',
+              description: "Added by Stripe",
             }}
             token={androidCardToken}
             ephemeralKey={ephemeralKey}
             onComplete={({ error }) => {
               Alert.alert(
-                error ? error.code : 'Success',
+                error ? error.code : "Success",
                 error
                   ? error.message
-                  : 'Card was successfully added to the wallet.'
+                  : "Card was successfully added to the wallet."
               );
             }}
           />
@@ -257,9 +257,9 @@ export default function GooglePayScreen() {
 const styles = StyleSheet.create({
   row: {
     marginTop: 30,
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-around",
   },
   donateButton: {
     width: 222,

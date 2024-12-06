@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   AccessibilityProps,
   StyleProp,
@@ -7,16 +7,16 @@ import {
   StyleSheet,
   Platform,
   NativeSyntheticEvent,
-} from 'react-native';
-import NativeStripeSdk from '../NativeStripeSdk';
+} from "react-native";
+import NativeStripeSdk from "../NativeStripeSdk";
 import {
   ButtonType,
   ButtonStyle,
   ShippingMethod,
   ShippingContact,
-} from '../types/PlatformPay';
-import GooglePayButtonNative from './GooglePayButtonNative';
-import ApplePayButtonNative from './ApplePayButtonNative';
+} from "../types/PlatformPay";
+import GooglePayButtonNative from "./GooglePayButtonNative";
+import ApplePayButtonNative from "./ApplePayButtonNative";
 
 /**
  *  PlatformPayButton Component Props
@@ -111,7 +111,10 @@ export function PlatformPayButton({
           shippingMethod: ShippingMethod;
         }>
       ) => {
-        onShippingMethodSelected && onShippingMethodSelected(value.nativeEvent);
+        const istrue =
+          onShippingMethodSelected &&
+          onShippingMethodSelected(value.nativeEvent);
+        return istrue;
       }
     : undefined;
 
@@ -131,7 +134,9 @@ export function PlatformPayButton({
           couponCode: string;
         }>
       ) => {
-        onCouponCodeEntered && onCouponCodeEntered(value.nativeEvent);
+        const istrue =
+          onCouponCodeEntered && onCouponCodeEntered(value.nativeEvent);
+        return istrue;
       }
     : undefined;
 
@@ -148,7 +153,7 @@ export function PlatformPayButton({
       onPress={onPress}
       style={[disabled ? styles.disabled : styles.notDisabled, style]}
     >
-      {Platform.OS === 'ios' ? (
+      {Platform.OS === "ios" ? (
         <ApplePayButtonNative
           type={type}
           buttonStyle={appearance}

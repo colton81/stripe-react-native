@@ -1,11 +1,11 @@
-import type { CardFieldInput, CardBrand } from '../types';
+import type { CardFieldInput, CardBrand } from "../types";
 import React, {
   forwardRef,
   useCallback,
   useImperativeHandle,
   useLayoutEffect,
   useRef,
-} from 'react';
+} from "react";
 import {
   AccessibilityProps,
   NativeSyntheticEvent,
@@ -14,16 +14,16 @@ import {
   StyleProp,
   findNodeHandle,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
 import {
   currentlyFocusedInput,
   focusInput,
   registerInput,
   unregisterInput,
-} from '../helpers';
+} from "../helpers";
 
 const CardFieldNative =
-  requireNativeComponent<CardFieldInput.NativeProps>('CardField');
+  requireNativeComponent<CardFieldInput.NativeProps>("CardField");
 
 /**
  *  Card Field Component Props
@@ -106,12 +106,12 @@ export const CardField = forwardRef<CardFieldInput.Methods, Props>(
           validCVC: card.validCVC,
         };
 
-        if (card.hasOwnProperty('postalCode')) {
-          data.postalCode = card.postalCode || '';
+        if ("postalCode" in card) {
+          data.postalCode = card.postalCode || "";
         }
-        if (card.hasOwnProperty('number') || card.hasOwnProperty('cvc')) {
-          data.number = card.number || '';
-          data.cvc = card.cvc || '';
+        if ("number" in card || "cvc" in card) {
+          data.number = card.number || "";
+          data.cvc = card.cvc || "";
           if (__DEV__ && onCardChange && card.complete) {
             console.warn(
               `[stripe-react-native] ⚠️ WARNING: You've enabled \`dangerouslyGetFullCardDetails\`, meaning full card details are being returned. Only do this if you're certain that you fulfill the necessary PCI compliance requirements. Make sure that you're not mistakenly logging or storing full card details! See the docs for details: https://stripe.com/docs/security/guide#validating-pci-compliance`
@@ -124,7 +124,7 @@ export const CardField = forwardRef<CardFieldInput.Methods, Props>(
     );
 
     const onFocusHandler = useCallback(
-      (event) => {
+      (event: { nativeEvent: { focusedField: any } }) => {
         const { focusedField } = event.nativeEvent;
         if (focusedField) {
           focusInput(inputRef.current);
@@ -139,7 +139,7 @@ export const CardField = forwardRef<CardFieldInput.Methods, Props>(
     const focus = () => {
       UIManager.dispatchViewManagerCommand(
         findNodeHandle(inputRef.current),
-        'focus' as any,
+        "focus" as any,
         []
       );
     };
@@ -147,7 +147,7 @@ export const CardField = forwardRef<CardFieldInput.Methods, Props>(
     const blur = () => {
       UIManager.dispatchViewManagerCommand(
         findNodeHandle(inputRef.current),
-        'blur' as any,
+        "blur" as any,
         []
       );
     };
@@ -155,7 +155,7 @@ export const CardField = forwardRef<CardFieldInput.Methods, Props>(
     const clear = () => {
       UIManager.dispatchViewManagerCommand(
         findNodeHandle(inputRef.current),
-        'clear' as any,
+        "clear" as any,
         []
       );
     };

@@ -1,4 +1,4 @@
-import { NativeModules } from 'react-native';
+import { NativeModules } from "react-native";
 import type {
   PaymentMethod,
   PaymentIntent,
@@ -32,7 +32,7 @@ import type {
   StripeError,
   CustomerPaymentOption,
   CustomerAdapter,
-} from './types';
+} from "./types";
 
 type NativeStripeSdkType = {
   initialise(params: InitialiseParams): Promise<void>;
@@ -128,6 +128,7 @@ type NativeStripeSdkType = {
   ): Promise<void>;
   initCustomerSheet(
     params: CustomerSheetInitParams,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     customerAdapterOverrides: { [Property in keyof CustomerAdapter]: boolean }
   ): Promise<{ error?: StripeError<CustomerSheetError> }>;
   presentCustomerSheet(
@@ -148,7 +149,7 @@ type NativeStripeSdkType = {
     paymentOption: CustomerPaymentOption | null
   ): Promise<void>;
   customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
-    clientSecret: String
+    clientSecret: string
   ): Promise<void>;
 };
 

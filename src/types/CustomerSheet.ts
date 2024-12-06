@@ -98,7 +98,7 @@ export interface CustomerAdapter {
    *   - paymentMethod:   The Stripe Payment Method ID to delete from the customer
    * Return the payment method in JSON format.
    */
-  detachPaymentMethod?(paymentMethodId: String): Promise<object>;
+  detachPaymentMethod?(paymentMethodId: string): Promise<object>;
   /** Set the last selected payment method for the customer.
    * To unset the default payment method, `null` is passed as the `paymentOption`.
    * If you are implementing your own CustomerAdapter:
@@ -116,7 +116,7 @@ export interface CustomerAdapter {
   /** Creates a SetupIntent configured to attach a new payment method to a customer,
    * then returns the client secret for the created SetupIntent.
    */
-  setupIntentClientSecretForCustomerAttach?(): Promise<String>;
+  setupIntentClientSecretForCustomerAttach?(): Promise<string>;
 }
 
 export type CustomerPaymentOption =

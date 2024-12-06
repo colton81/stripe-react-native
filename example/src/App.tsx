@@ -1,49 +1,49 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WebhookPaymentScreen from './screens/WebhookPaymentScreen';
-import HomeScreen from './screens/HomeScreen';
-import NoWebhookPaymentScreen from './screens/NoWebhookPaymentScreen';
-import ApplePayScreen from './screens/ApplePayScreen';
-import SetupFuturePaymentScreen from './screens/SetupFuturePaymentScreen';
-import { StatusBar } from 'react-native';
-import { colors } from './colors';
-import CreateTokenScreen from './screens/CreateTokenScreen';
-import PaymentsUICompleteScreen from './screens/PaymentsUICompleteScreen';
-import PaymentSheetWithSetupIntent from './screens/PaymentSheetWithSetupIntent';
-import PaymentsUICustomScreen from './screens/PaymentsUICustomScreen';
-import CVCReCollectionScreen from './screens/CVCReCollectionScreen';
-import IdealPaymentScreen from './screens/IdealPaymentScreen';
-import IdealSetupFuturePaymentScreen from './screens/IdealSetupFuturePaymentScreen';
-import AlipayPaymentScreen from './screens/AlipayPaymentScreen';
-import PaymentResultScreen from './screens/PaymentResultScreen';
-import SofortPaymentScreen from './screens/SofortPaymentScreen';
-import SofortSetupFuturePaymentScreen from './screens/SofortSetupFuturePaymentScreen';
-import BancontactPaymentScreen from './screens/BancontactPaymentScreen';
-import BancontactSetupFuturePaymentScreen from './screens/BancontactSetupFuturePaymentScreen';
-import SepaPaymentScreen from './screens/SepaPaymentScreen';
-import SepaSetupFuturePaymentScreen from './screens/SepaSetupFuturePaymentScreen';
-import OxxoPaymentScreen from './screens/OxxoPaymentScreen';
-import GiropayPaymentScreen from './screens/GiropayPaymentScreen';
-import EPSPaymentScreen from './screens/EPSPaymentScreen';
-import GrabPayPaymentScreen from './screens/GrabPayPaymentScreen';
-import P24PaymentScreen from './screens/P24PaymentScreen';
-import AuBECSDebitPaymentScreen from './screens/AuBECSDebitPaymentScreen';
-import AfterpayClearpayPaymentScreen from './screens/AfterpayClearpayPaymentScreen';
-import KlarnaPaymentScreen from './screens/KlarnaPaymentScreen';
-import AuBECSDebitSetupPaymentScreen from './screens/AuBECSDebitSetupPaymentScreen';
-import MultilineWebhookPaymentScreen from './screens/MultilineWebhookPaymentScreen';
-import GooglePayScreen from './screens/GooglePayScreen';
-import ACHPaymentScreen from './screens/ACHPaymentScreen';
-import ACHSetupScreen from './screens/ACHSetupScreen';
-import PayPalScreen from './screens/PayPalScreen';
-import AffirmScreen from './screens/AffirmScreen';
-import CollectBankAccountScreen from './screens/CollectBankAccountScreen';
-import CashAppScreen from './screens/CashAppScreen';
-import PaymentSheetDeferredIntentScreen from './screens/PaymentSheetDeferredIntentScreen';
-import PaymentSheetDeferredIntentMultiStepScreen from './screens/PaymentSheetDeferredIntentMultiStepScreen';
-import CustomerSheetScreen from './screens/CustomerSheetScreen';
-import RevolutPayScreen from './screens/RevolutPayScreen';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import WebhookPaymentScreen from "./screens/WebhookPaymentScreen";
+import HomeScreen from "./screens/HomeScreen";
+import NoWebhookPaymentScreen from "./screens/NoWebhookPaymentScreen";
+import ApplePayScreen from "./screens/ApplePayScreen";
+import SetupFuturePaymentScreen from "./screens/SetupFuturePaymentScreen";
+import { StatusBar } from "react-native";
+import { colors } from "./colors";
+import CreateTokenScreen from "./screens/CreateTokenScreen";
+import PaymentsUICompleteScreen from "./screens/PaymentsUICompleteScreen";
+import PaymentSheetWithSetupIntent from "./screens/PaymentSheetWithSetupIntent";
+import PaymentsUICustomScreen from "./screens/PaymentsUICustomScreen";
+import CVCReCollectionScreen from "./screens/CVCReCollectionScreen";
+import IdealPaymentScreen from "./screens/IdealPaymentScreen";
+import IdealSetupFuturePaymentScreen from "./screens/IdealSetupFuturePaymentScreen";
+import AlipayPaymentScreen from "./screens/AlipayPaymentScreen";
+import PaymentResultScreen from "./screens/PaymentResultScreen";
+import SofortPaymentScreen from "./screens/SofortPaymentScreen";
+import SofortSetupFuturePaymentScreen from "./screens/SofortSetupFuturePaymentScreen";
+import BancontactPaymentScreen from "./screens/BancontactPaymentScreen";
+import BancontactSetupFuturePaymentScreen from "./screens/BancontactSetupFuturePaymentScreen";
+import SepaPaymentScreen from "./screens/SepaPaymentScreen";
+import SepaSetupFuturePaymentScreen from "./screens/SepaSetupFuturePaymentScreen";
+import OxxoPaymentScreen from "./screens/OxxoPaymentScreen";
+import GiropayPaymentScreen from "./screens/GiropayPaymentScreen";
+import EPSPaymentScreen from "./screens/EPSPaymentScreen";
+import GrabPayPaymentScreen from "./screens/GrabPayPaymentScreen";
+import P24PaymentScreen from "./screens/P24PaymentScreen";
+import AuBECSDebitPaymentScreen from "./screens/AuBECSDebitPaymentScreen";
+import AfterpayClearpayPaymentScreen from "./screens/AfterpayClearpayPaymentScreen";
+import KlarnaPaymentScreen from "./screens/KlarnaPaymentScreen";
+import AuBECSDebitSetupPaymentScreen from "./screens/AuBECSDebitSetupPaymentScreen";
+import MultilineWebhookPaymentScreen from "./screens/MultilineWebhookPaymentScreen";
+import GooglePayScreen from "./screens/GooglePayScreen";
+import ACHPaymentScreen from "./screens/ACHPaymentScreen";
+import ACHSetupScreen from "./screens/ACHSetupScreen";
+import PayPalScreen from "./screens/PayPalScreen";
+import AffirmScreen from "./screens/AffirmScreen";
+import CollectBankAccountScreen from "./screens/CollectBankAccountScreen";
+import CashAppScreen from "./screens/CashAppScreen";
+import PaymentSheetDeferredIntentScreen from "./screens/PaymentSheetDeferredIntentScreen";
+import PaymentSheetDeferredIntentMultiStepScreen from "./screens/PaymentSheetDeferredIntentMultiStepScreen";
+import CustomerSheetScreen from "./screens/CustomerSheetScreen";
+import RevolutPayScreen from "./screens/RevolutPayScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -91,11 +91,7 @@ export type RootStackParamList = {
   RevolutPayScreen: undefined;
 };
 
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}
+export type { RootStackParamList as RootParamList };
 
 export default function App() {
   return (

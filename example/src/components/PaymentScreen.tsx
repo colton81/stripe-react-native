@@ -1,8 +1,8 @@
-import { initStripe } from '@stripe/stripe-react-native';
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
-import { colors } from '../colors';
-import { fetchPublishableKey } from '../helpers';
+import { initStripe } from "@stripe/stripe-react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, ScrollView, StyleSheet } from "react-native";
+import { colors } from "../colors";
+import { fetchPublishableKey } from "../helpers";
 
 interface Props {
   paymentMethod?: string;
@@ -22,8 +22,8 @@ const PaymentScreen: React.FC<Props> = ({
       if (publishableKey) {
         await initStripe({
           publishableKey,
-          merchantIdentifier: 'merchant.com.stripe.react.native',
-          urlScheme: 'stripe-example',
+          merchantIdentifier: "merchant.com.stripe.react.native",
+          urlScheme: "stripe-example",
           setReturnUrlSchemeOnAndroid: true,
         });
         setLoading(false);
@@ -31,7 +31,6 @@ const PaymentScreen: React.FC<Props> = ({
       }
     }
     initialize();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return loading ? (

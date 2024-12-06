@@ -59,7 +59,7 @@ type SetupParamsBase = IntentParams & {
    *  - Example: ["card", "external_paypal", "klarna"]
    *  - Note: If you omit payment methods from this list, they’ll be automatically ordered by Stripe after the ones you provide. Invalid payment methods are ignored.
    */
-  paymentMethodOrder?: Array<String>;
+  paymentMethodOrder?: Array<string>;
   /** This is an experimental feature that may be removed at any time.
    *  Defaults to true. If true, the customer can delete all saved payment methods.
    *  If false, the customer can't delete if they only have one saved payment method remaining.
@@ -328,7 +328,7 @@ export type BillingDetailsCollectionConfiguration = {
   /** How to collect the billing address. Defaults to `CollectionMode.automatic`. */
   address?: AddressCollectionMode;
   /** Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form. If `false` (the default), those values will only be used to prefill the corresponding fields in the form. */
-  attachDefaultsToPaymentMethod?: Boolean;
+  attachDefaultsToPaymentMethod?: boolean;
 };
 
 export enum CollectionMode {

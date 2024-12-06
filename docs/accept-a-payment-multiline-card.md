@@ -19,7 +19,7 @@ For iOS, run `pod install` in the `ios` directory to ensure that you also instal
 When your app starts, configure the SDK with your Stripe [publishable key](https://stripe.com/dashboard.stripe.com/account/apikeys) so it can make requests to the Stripe API:
 
 ```tsx
-import { StripeProvider } from '@stripe/stripe-react-native';
+import { StripeProvider } from '@colton81/stripe-react-native';
 
 function App() {
   return (

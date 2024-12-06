@@ -264,7 +264,7 @@
 
 **Fixes**
 
-- Compatible with v0.1.4 of `@stripe/stripe-identity-react-native`. [8fa8a7a](https://github.com/stripe/stripe-react-native/commit/8fa8a7a0595a31d7422af6bbe26d696ba5e211f7)
+- Compatible with v0.1.4 of `@colton81/stripe-identity-react-native`. [8fa8a7a](https://github.com/stripe/stripe-react-native/commit/8fa8a7a0595a31d7422af6bbe26d696ba5e211f7)
 
 ## 0.25.0 - 2023-02-27
 
@@ -382,7 +382,7 @@
 
 **Breaking changes**
 
-- This library now supports iOS 13 and up, due to `stripe-ios` increasing the deployment target. If you would like to build for iOS 12, please continue to use `@stripe/stripe-react-native@0.19.0`. [#1190](https://github.com/stripe/stripe-react-native/pull/1190)
+- This library now supports iOS 13 and up, due to `stripe-ios` increasing the deployment target. If you would like to build for iOS 12, please continue to use `@colton81/stripe-react-native@0.19.0`. [#1190](https://github.com/stripe/stripe-react-native/pull/1190)
 
 **Features**
 
@@ -471,7 +471,7 @@
 
 **Fixes**
 
-- Reduced the size of the `@stripe/stripe-react-native` by preventing unnecessary files from being published. [#1043](https://github.com/stripe/stripe-react-native/pull/1043)
+- Reduced the size of the `@colton81/stripe-react-native` by preventing unnecessary files from being published. [#1043](https://github.com/stripe/stripe-react-native/pull/1043)
 
 ## 0.15.0 - 2022-07-14
 
@@ -663,7 +663,7 @@
 
 ## 0.6.0 - 2022-04-01
 
-- [#861](https://github.com/stripe/stripe-react-native/pull/861) BREAKING: This library now supports iOS 12 and up, due to `stripe-ios` increasing the deployment target. If you would like to build for iOS 11, please continue to use `@stripe/stripe-react-native@0.5.0`.
+- [#861](https://github.com/stripe/stripe-react-native/pull/861) BREAKING: This library now supports iOS 12 and up, due to `stripe-ios` increasing the deployment target. If you would like to build for iOS 11, please continue to use `@colton81/stripe-react-native@0.5.0`.
   - To upgrade your iOS deployment target to 12.0, you can either do so in Xcode under your `Build Settings`, or by modifying `IPHONEOS_DEPLOYMENT_TARGET` in your `project.pbxproj` directly. You will also need to update your Podfile to target `:ios, '12.0'`.
 - [#861](https://github.com/stripe/stripe-react-native/pull/861) Feat: Add support for ACHv2 payments **on iOS only**.
 - [#861](https://github.com/stripe/stripe-react-native/pull/861) Chore: Upgrade `stripe-ios` to 22.0.0.
