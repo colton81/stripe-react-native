@@ -1,6 +1,6 @@
 # Stripe React Native SDK
 
-[![npm version](https://img.shields.io/npm/v/@colton81/stripe-react-native.svg?style=flat-square)](https://www.npmjs.com/package/@colton81/stripe-react-native)
+[![npm version](https://img.shields.io/npm/v/@stripe/stripe-react-native.svg?style=flat-square)](https://www.npmjs.com/package/@stripe/stripe-react-native)
 [![License](https://img.shields.io/github/license/stripe/stripe-react-native)](https://github.com/stripe/stripe-react-native/blob/master/LICENSE)
 
 The Stripe React Native SDK allows you to build delightful payment experiences in your native Android and iOS apps using React Native. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
@@ -32,9 +32,9 @@ If you're selling digital products or services within your app, (e.g. subscripti
 ## Installation
 
 ```sh
-yarn add @colton81/stripe-react-native
+yarn add @stripe/stripe-react-native
 or
-npm install @colton81/stripe-react-native
+npm install @stripe/stripe-react-native
 ```
 
 ### Expo
@@ -44,7 +44,7 @@ npm install @colton81/stripe-react-native
 Each Expo SDK version requires a specific `stripe-react-native` version. See the [CHANGELOG](./CHANGELOG.md) for a mapping of versions. To install the correct version for your Expo SDK version run:
 
 ```sh
-expo install @colton81/stripe-react-native
+expo install @stripe/stripe-react-native
 ```
 
 Next, add:
@@ -55,7 +55,7 @@ Next, add:
     ...
     "plugins": [
       [
-        "@colton81/stripe-react-native",
+        "@stripe/stripe-react-native",
         {
           "merchantIdentifier": string | string [],
           "enableGooglePay": boolean
@@ -96,7 +96,7 @@ implementation 'com.google.android.material:material:<version>'
 
 #### iOS
 
-The Stripe React Native SDK requires Xcode 14.1 or later and is compatible with apps targeting iOS 13 or above. For iOS 12 support, please use [`@colton81/stripe-react-native@0.19.0`](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
+The Stripe React Native SDK requires Xcode 14.1 or later and is compatible with apps targeting iOS 13 or above. For iOS 12 support, please use [`@stripe/stripe-react-native@0.19.0`](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
 
 The SDK uses TypeScript features available in Babel version `7.9.0` and above.
 Alternatively use the `plugin-transform-typescript` plugin in your project.
@@ -109,7 +109,7 @@ For a complete example, [visit our docs](https://docs.stripe.com/payments/accept
 
 ```tsx
 // App.ts
-import { StripeProvider } from '@colton81/stripe-react-native';
+import { StripeProvider } from '@stripe/stripe-react-native';
 
 function App() {
   return (
@@ -124,7 +124,7 @@ function App() {
 }
 
 // PaymentScreen.ts
-import { useStripe } from '@colton81/stripe-react-native';
+import { useStripe } from '@stripe/stripe-react-native';
 
 export default function PaymentScreen() {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
@@ -168,7 +168,7 @@ To initialize Stripe in your React Native app, use the `StripeProvider` componen
 `StripeProvider` can accept `urlScheme`, `publishableKey`, `stripeAccountId`, `threeDSecureParams` and `merchantIdentifier` as props. Only `publishableKey` is required.
 
 ```tsx
-import { StripeProvider } from '@colton81/stripe-react-native';
+import { StripeProvider } from '@stripe/stripe-react-native';
 
 function App() {
   const [publishableKey, setPublishableKey] = useState('');
@@ -197,7 +197,7 @@ function App() {
 or
 
 ```tsx
-import { initStripe } from '@colton81/stripe-react-native';
+import { initStripe } from '@stripe/stripe-react-native';
 
 function App() {
   // ...
@@ -228,9 +228,9 @@ This library includes a built in mock file for Jest.
 In order to use it, add the following code to the Jest setup file:
 
 ```tsx
-import mock from '@colton81/stripe-react-native/jest/mock.js';
+import mock from '@stripe/stripe-react-native/jest/mock.js';
 
-jest.mock('@colton81/stripe-react-native', () => mock);
+jest.mock('@stripe/stripe-react-native', () => mock);
 ```
 
 To have a more control over the mocks, you can extend and override particular methods e.g.:
@@ -238,7 +238,7 @@ To have a more control over the mocks, you can extend and override particular me
 ```tsx
 const presentNativePayMock = jest.fn();
 
-jest.mock('@colton81/stripe-react-native', () => ({
+jest.mock('@stripe/stripe-react-native', () => ({
   ...mock,
   presentNativePay: presentNativePayMock,
 }));

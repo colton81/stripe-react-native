@@ -729,7 +729,7 @@ app.post('/ephemeral-key', async (req, res) => {
   });
 
   try {
-    const key = await stripe.ephemeralKeys.create(
+    let key = await stripe.ephemeralKeys.create(
       { issuing_card: req.body.issuingCardId },
       { apiVersion: req.body.apiVersion }
     );
@@ -749,7 +749,7 @@ app.post('/issuing-card-details', async (req, res) => {
   });
 
   try {
-    const card = await stripe.issuing.cards.retrieve(req.body.id);
+    let card = await stripe.issuing.cards.retrieve(req.body.id);
 
     if (!card) {
       console.log('No card with that ID exists.');
@@ -892,7 +892,7 @@ app.post('/detach-payment-method', async (req, res) => {
 });
 
 // Mocks a Database. In your code, you should use a persistent database.
-const savedPaymentOptions = new Map<string, string>();
+let savedPaymentOptions = new Map<string, string>();
 
 app.post('/set-payment-option', async (req, res) => {
   savedPaymentOptions.set(req.body.customerId, req.body.paymentOption);

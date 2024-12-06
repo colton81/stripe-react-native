@@ -103,11 +103,11 @@ export type Balance = {
   /** The type of this balance, either cash or credit. */
   type: BalanceType;
   /** The funds available to the account holder. Typically this is the current balance less any holds.  Each key is a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase.  Each value is an integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder. */
-  cash: { available: Map<string, number> | null };
+  cash: { available: Map<String, number> | null };
   /** The credit that has been used by the account holder.  Each key is a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase.  Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder. */
-  credit: { used: Map<string, number> | null };
+  credit: { used: Map<String, number> | null };
   /** The balances owed to (or by) the account holder.  Each key is a three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase.  Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder. */
-  current: Map<string, number>;
+  current: Map<String, number>;
 };
 
 export type BalanceRefresh = {

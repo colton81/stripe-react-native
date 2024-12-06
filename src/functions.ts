@@ -396,7 +396,7 @@ export const initPaymentSheet = async (
   try {
     if (Platform.OS === 'ios' && !params.returnURL) {
       console.warn(
-        `[@colton81/stripe-react-native] You have not provided the 'returnURL' field to 'initPaymentSheet', so payment methods that require redirects will not be shown in your iOS Payment Sheet. Visit https://stripe.com/docs/payments/accept-a-payment?platform=react-native&ui=payment-sheet#react-native-set-up-return-url to learn more.`
+        `[@stripe/stripe-react-native] You have not provided the 'returnURL' field to 'initPaymentSheet', so payment methods that require redirects will not be shown in your iOS Payment Sheet. Visit https://stripe.com/docs/payments/accept-a-payment?platform=react-native&ui=payment-sheet#react-native-set-up-return-url to learn more.`
       );
     }
     result = await NativeStripeSdk.initPaymentSheet(params);
@@ -712,7 +712,7 @@ export const dismissPlatformPay = async (): Promise<boolean> => {
   try {
     const didDismiss = await NativeStripeSdk.dismissPlatformPay();
     return didDismiss;
-  } catch {
+  } catch (error: any) {
     return false;
   }
 };

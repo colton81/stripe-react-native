@@ -1,11 +1,11 @@
-import type { CardFormView, CardBrand } from "../types";
+import type { CardFormView, CardBrand } from '../types';
 import React, {
   forwardRef,
   useCallback,
   useImperativeHandle,
   useLayoutEffect,
   useRef,
-} from "react";
+} from 'react';
 import {
   AccessibilityProps,
   NativeSyntheticEvent,
@@ -14,16 +14,16 @@ import {
   StyleProp,
   findNodeHandle,
   ViewStyle,
-} from "react-native";
+} from 'react-native';
 import {
   currentlyFocusedInput,
   focusInput,
   registerInput,
   unregisterInput,
-} from "../helpers";
+} from '../helpers';
 
 const CardFormNative =
-  requireNativeComponent<CardFormView.NativeProps>("CardForm");
+  requireNativeComponent<CardFormView.NativeProps>('CardForm');
 
 /**
  *  Card Form Component Props
@@ -105,9 +105,9 @@ export const CardForm = forwardRef<CardFormView.Methods, Props>(
           postalCode: card.postalCode,
         };
 
-        if ("number" in card || "cvc" in card) {
-          data.number = card.number || "";
-          data.cvc = card.cvc || "";
+        if (card.hasOwnProperty('number') || card.hasOwnProperty('cvc')) {
+          data.number = card.number || '';
+          data.cvc = card.cvc || '';
           if (__DEV__ && onFormComplete && card.complete) {
             console.warn(
               `[stripe-react-native] ⚠️ WARNING: You've enabled \`dangerouslyGetFullCardDetails\`, meaning full card details are being returned. Only do this if you're certain that you fulfill the necessary PCI compliance requirements. Make sure that you're not mistakenly logging or storing full card details! See the docs for details: https://stripe.com/docs/security/guide#validating-pci-compliance`
@@ -122,7 +122,7 @@ export const CardForm = forwardRef<CardFormView.Methods, Props>(
     const focus = () => {
       UIManager.dispatchViewManagerCommand(
         findNodeHandle(inputRef.current),
-        "focus" as any,
+        'focus' as any,
         []
       );
     };
@@ -130,7 +130,7 @@ export const CardForm = forwardRef<CardFormView.Methods, Props>(
     const blur = () => {
       UIManager.dispatchViewManagerCommand(
         findNodeHandle(inputRef.current),
-        "blur" as any,
+        'blur' as any,
         []
       );
     };
@@ -140,18 +140,15 @@ export const CardForm = forwardRef<CardFormView.Methods, Props>(
       blur,
     }));
 
-    const onFocusHandler = useCallback(
-      (event: { nativeEvent: { focusedField: any } }) => {
-        const { focusedField } = event.nativeEvent;
-        if (focusedField) {
-          focusInput(inputRef.current);
-          // onFocus?.(focusedField);
-        } else {
-          // onBlur?.();
-        }
-      },
-      []
-    );
+    const onFocusHandler = useCallback((event) => {
+      const { focusedField } = event.nativeEvent;
+      if (focusedField) {
+        focusInput(inputRef.current);
+        // onFocus?.(focusedField);
+      } else {
+        // onBlur?.();
+      }
+    }, []);
 
     useLayoutEffect(() => {
       const inputRefValue = inputRef.current;

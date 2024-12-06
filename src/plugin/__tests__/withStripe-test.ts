@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { setApplePayEntitlement, setGooglePayMetaData } from '../withStripe';
 
 jest.mock(
-  '@colton81/stripe-react-native/package.json',
+  '@stripe/stripe-react-native/package.json',
   () => ({
     name: 'stripe-react-native',
     version: '0.1.1',

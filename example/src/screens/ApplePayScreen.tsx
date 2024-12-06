@@ -20,7 +20,7 @@ export default function ApplePayScreen() {
   const [showAddToWalletButton, setShowAddToWalletButton] = useState(true);
   const [cardDetails, setCardDetails] = useState<any>(null);
   const [isApplePaySupported, setIsApplePaySupported] = useState(false);
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [clientSecret, setClientSecret] = useState<String | null>(null);
   const {
     createPlatformPayPaymentMethod,
     createPlatformPayToken,

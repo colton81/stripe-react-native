@@ -2,12 +2,12 @@ import {
   AuBECSDebitForm,
   AuBECSDebitFormComponent,
   useConfirmSetupIntent,
-} from "@stripe/stripe-react-native";
-import React, { useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
-import Button from "../components/Button";
-import PaymentScreen from "../components/PaymentScreen";
-import { API_URL } from "../Config";
+} from '@stripe/stripe-react-native';
+import React, { useState } from 'react';
+import { Alert, StyleSheet, View } from 'react-native';
+import Button from '../components/Button';
+import PaymentScreen from '../components/PaymentScreen';
+import { API_URL } from '../Config';
 
 export default function AuBECSDebitSetupPaymentScreen() {
   const [formDetails, setFormDetails] =
@@ -16,13 +16,13 @@ export default function AuBECSDebitSetupPaymentScreen() {
 
   const createSetupIntentOnBackend = async (customerEmail: string) => {
     const response = await fetch(`${API_URL}/create-setup-intent`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: customerEmail,
-        payment_method_types: ["au_becs_debit"],
+        payment_method_types: ['au_becs_debit'],
       }),
     });
     const { clientSecret } = await response.json();
@@ -37,7 +37,7 @@ export default function AuBECSDebitSetupPaymentScreen() {
     const clientSecret = await createSetupIntentOnBackend(formDetails.email);
 
     const { error, setupIntent } = await confirmSetupIntent(clientSecret, {
-      paymentMethodType: "AuBecsDebit",
+      paymentMethodType: 'AuBecsDebit',
       paymentMethodData: {
         formDetails,
       },
@@ -45,10 +45,10 @@ export default function AuBECSDebitSetupPaymentScreen() {
 
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
-      console.log("Setup intent confirmation error", error.message);
+      console.log('Setup intent confirmation error', error.message);
     } else if (setupIntent) {
       Alert.alert(
-        "Success",
+        'Success',
         `Setup intent created. Intent status: ${setupIntent.status}`
       );
     }
@@ -60,15 +60,16 @@ export default function AuBECSDebitSetupPaymentScreen() {
         style={styles.form}
         onComplete={(value) => setFormDetails(value)}
         companyName="test"
+        // eslint-disable-next-line react-native/no-inline-styles
         formStyle={{
           borderWidth: 2.5,
-          backgroundColor: "#ffffff",
-          borderColor: "#D3D3D3",
+          backgroundColor: '#ffffff',
+          borderColor: '#D3D3D3',
           borderRadius: 10.9,
-          textColor: "#000000",
+          textColor: '#000000',
           fontSize: 20,
-          placeholderColor: "#D3D3D3",
-          textErrorColor: "#ff0000",
+          placeholderColor: '#D3D3D3',
+          textErrorColor: '#ff0000',
         }}
       />
 
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   form: {
-    width: "100%",
+    width: '100%',
     height: 400,
   },
 });

@@ -29,7 +29,7 @@ _after_:
 [initStripe](https://stripe.dev/stripe-react-native/api-reference/modules.html#initStripe) or [StripeProvider](https://stripe.dev/stripe-react-native/api-reference/modules.html#StripeProvider)
 
 ```tsx
-import { StripeProvider } from '@colton81/stripe-react-native';
+import { StripeProvider } from '@stripe/stripe-react-native';
 
 // ...
 
@@ -42,7 +42,7 @@ import { StripeProvider } from '@colton81/stripe-react-native';
 
 or
 
-import { initStripe } from '@colton81/stripe-react-native';
+import { initStripe } from '@stripe/stripe-react-native';
 
 // ...
 
@@ -54,7 +54,7 @@ initStripe({
 
 ## Class vs functional components
 
-All of the stripe functions can be imported directly from `@colton81/stripe-react-native` so that you can use them both with `class` and `functional` components.
+All of the stripe functions can be imported directly from `@stripe/stripe-react-native` so that you can use them both with `class` and `functional` components.
 However, you are also able to access them via dedicated `hooks`.
 For instance you can use `useConfirmPayment` hook which apart from `confirmPayment` method provides also `loading` state so you don't need to handle it manually.
 Moreover, there is also the main `useStripe` hook which provides all of the stripe methods.
@@ -63,7 +63,7 @@ examples:
 1.
 
 ```tsx
-import { useConfirmPayment } from '@colton81/stripe-react-native';
+import { useConfirmPayment } from '@stripe/stripe-react-native';
 
 const { confirmPayment, loading } = useConfirmPayment();
 
@@ -73,7 +73,7 @@ const { confirmPayment, loading } = useConfirmPayment();
 2.
 
 ```tsx
-import { useStripe } from '@colton81/stripe-react-native';
+import { useStripe } from '@stripe/stripe-react-native';
 
 const { confirmPayment } = useStripe();
 
@@ -83,7 +83,7 @@ const { confirmPayment } = useStripe();
 3.
 
 ```tsx
-import { confirmPayment } from '@colton81/stripe-react-native';
+import { confirmPayment } from '@stripe/stripe-react-native';
 
 // await confirmPayment(...)
 ```
@@ -323,7 +323,7 @@ _after:_
 [isApplePaySupported](https://stripe.dev/stripe-react-native/api-reference/modules.html#isApplePaySupported)
 
 ```tsx
-import { useApplePay } from '@colton81/stripe-react-native'
+import { useApplePay } from '@stripe/stripe-react-native'
 // ...
 const { isApplePaySupported } = useApplePay()
 // ...
@@ -338,7 +338,7 @@ return (
 if your application doesn't use functional components, as an alternative you can import `isApplePaySupported` method directly.
 
 ```tsx
-import { isApplePaySupported } from '@colton81/stripe-react-native';
+import { isApplePaySupported } from '@stripe/stripe-react-native';
 // ...
 const isSupported = isApplePaySupported();
 // ...
